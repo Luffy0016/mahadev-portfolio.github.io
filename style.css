@@ -214,95 +214,266 @@ section .title::after{
 }
 
 /* about section styling */
-.about .title::after{
-    content: "who i am";
+/* Root Variables */
+:root {
+    --primary-color: crimson;
+    --secondary-color: #222;
+    --bg-dark: #111; /* Black background for specific sections */
+    --text-color: #fff;
+    --border-radius: 6px;
 }
-.about .about-content .left{
+
+/* About Section Styling */
+.about .title::after {
+    content: "who I am";
+    color: var(--primary-color);
+}
+
+/* About Content Layout */
+.about .about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Left Column - Image with Hover Pulse and Glow Effect */
+.about .about-content .left {
+    position: relative;
     width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.about .about-content .left img{
-    height: 400px;
-    width: 400px;
+
+/* Profile Image */
+.about .about-content .left img {
+    height: 450px;
+    width: 450px;
     object-fit: cover;
-    border-radius: 600px;
-    border: 10px  solid crimson ;
+    border-radius: 50%;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-.about .about-content .right{
-    width: 55%;
+
+/* Glow & Slight Zoom on Hover */
+.about .about-content .left img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8); /* Crimson glow */
 }
-.about .about-content .right .text{
+
+/* Pulse & Glow Effect (Now Appears ONLY on Hover) */
+.about .about-content .left::before {
+    content: "";
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(220, 20, 60, 0.6), transparent);
+    box-shadow: 0 0 50px rgba(220, 20, 60, 0.8); /* Glow effect */
+    z-index: 0;
+    opacity: 0;
+    transform: scale(0); /* Hidden by default */
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Show Pulse & Glow Effect on Hover */
+.about .about-content .left:hover::before {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse-animation 1.5s infinite ease-in-out;
+}
+
+/* Smooth Pulsing Glow Animation */
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+        box-shadow: 0 0 60px rgba(220, 20, 60, 1);
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.5;
+        box-shadow: 0 0 40px rgba(220, 20, 60, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+        box-shadow: 0 0 60px rgba(220, 20, 60, 1);
+    }
+}
+
+/* Right Column - Text */
+.about .about-content .right {
+    width: 50%;
+    height: 100%;
+}
+
+.about .about-content .right .text {
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 10px;
 }
-.about .about-content .right .text span{
-    color: crimson;
-}
-.about .about-content .right p{
-    text-align: justify;
-}
-.about .about-content .right a{
-    display: inline-block;
-    background: crimson;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 10px 30px;
-    margin-top: 20px;
-    border-radius: 6px;
-    border: 2px solid crimson;
-    transition: all 0.3s ease;
-}
-.about .about-content .right a:hover{
-    color: crimson;
-    background: none;
+
+.about .about-content .right .text span {
+    color: var(--primary-color);
 }
 
-/* services section styling */
-.services, .teams{
-    color:#fff;
-    background: #111;
+.about .about-content .right p {
+    text-align: justify;
 }
-.services .title::before,
-.teams .title::before{
-    background: #fff;
-}
-.services .title::after,
-.teams .title::after{
-    background: #111;
-    content: "what i provide";
-}
-.services .serv-content .card{
-    width: calc(33% - 20px);
-    background: #222;
-    text-align: center;
-    border-radius: 6px;
-    padding: 50px 25px;
+
+/* Download CV Button */
+#downloadcv {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px 30px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    border: 2px solid black;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
+}
+
+/* Button Hover Effect */
+#downloadcv:hover {
+    background: none;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* ✅ Fix Background Issue for "My Services" & "My Team" Only */
+#services, #team {
+    background-color: var(--bg-dark); /* Black background */
+    color: var(--text-color); /* White text */
+    padding: 60px 0;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .about .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about .about-content .left,
+    .about .about-content .right {
+        width: 100%;
+    }
+
+    .about .about-content .left img {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+/* Services & Teams Section */
+.services, .teams {
+    color: var(--text-color);
+    background: var(--bg-dark);
+}
+
+/* Title Decorations */
+.services .title::before,
+.teams .title::before {
+    background: var(--text-color);
+}
+
+.services .title::after,
+.teams .title::after {
+    background: var(--bg-dark);
+    content: "what I provide";
+}
+
+/* Carousel Settings */
+.services .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Service Cards - Now with Equal Heights */
+.services .carousel .card {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    padding: 25px 35px;
+    text-align: center;
+    overflow: hidden;
     transition: all 0.3s ease;
+    height: 320px; /* Fixed height for uniformity */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.services .serv-content .card:hover{
-    background: crimson;
-}
-.services .serv-content .card .box{
-    transition: all 0.3s ease;
-}
-.services .serv-content .card:hover .box{
+.services .carousel .card:hover {
+    background: var(--primary-color);
     transform: scale(1.05);
 }
-.services .serv-content .card i{
-    font-size: 50px;
-    color: crimson;
+
+/* Box Inside Card */
+.services .carousel .card .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Icons */
+.services .carousel .card i {
+    font-size: 60px;
+    color: var(--primary-color);
     transition: color 0.3s ease;
 }
-.services .serv-content .card:hover i{
-    color: #fff;
+.services .carousel .card:hover i {
+    color: var(--text-color);
 }
-.services .serv-content .card .text{
+
+/* Text Styling */
+.services .carousel .card .text {
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
+
+/* Owl Carousel Dots */
+.owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+.owl-dot {
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none !important;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color) !important;
+    transition: all 0.3s ease;
+}
+.owl-dot.active {
+    width: 35px;
+    border-radius: 14px;
+}
+.owl-dot.active,
+.owl-dot:hover {
+    background: var(--primary-color) !important;
+}
+
+/* Responsive Fix for Smaller Screens */
+@media (max-width: 768px) {
+    .services .carousel .card {
+        height: auto; /* Allow flexibility on smaller screens */
+    }
+}
+
 
 /* skills section styling */
 
@@ -379,68 +550,84 @@ section .title::after{
     width: 70%;
 }
 
-/* teams section styling */
-.teams .title::after{
+:root {
+    --primary-color: crimson;
+    --secondary-color: #222;
+    --border-radius: 6px;
+}
+
+/* Teams Section Styling */
+.teams .title::after {
     content: "who with me";
 }
-.teams .carousel .card{
-    background: #222;
-    border-radius: 6px;
+
+/* Card Styling */
+.teams .carousel .card {
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
     padding: 25px 35px;
     text-align: center;
     overflow: hidden;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover{
-    background: crimson;
+.teams .carousel .card:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
 }
-.teams .carousel .card .box{
+
+/* Box inside the Card */
+.teams .carousel .card .box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover .box{
-    transform: scale(1.05);
-}
-.teams .carousel .card .text{
+
+/* Card Text */
+.teams .carousel .card .text {
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
-.teams .carousel .card img{
+
+/* Profile Image */
+.teams .carousel .card img {
     height: 150px;
     width: 150px;
     object-fit: cover;
+    object-position: center;
     border-radius: 50%;
-    border: 5px solid crimson;
+    border: 5px solid var(--primary-color);
     transition: all 0.3s ease;
 }
-.teams .carousel .card:hover img{
+.teams .carousel .card:hover img {
     border-color: #fff;
 }
-.owl-dots{
+
+/* Owl Carousel Dots */
+.owl-dots {
     text-align: center;
     margin-top: 20px;
 }
-.owl-dot{
+.owl-dot {
     height: 13px;
     width: 13px;
     margin: 0 5px;
-    outline: none!important;
+    outline: none !important;
     border-radius: 50%;
-    border: 2px solid crimson!important;
+    border: 2px solid var(--primary-color) !important;
     transition: all 0.3s ease;
 }
-.owl-dot.active{
+.owl-dot.active {
     width: 35px;
     border-radius: 14px;
 }
 .owl-dot.active,
-.owl-dot:hover{
-    background: crimson!important;
+.owl-dot:hover {
+    background: var(--primary-color) !important;
 }
+
 
 /* contact section styling */
 .contact .title::after{
@@ -679,88 +866,3 @@ footer span a:hover{
         line-height: 38px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
