@@ -11,7 +11,7 @@ html{
     scroll-behavior: smooth;
 }
 
-/* custom scroll bar */
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -26,7 +26,7 @@ html{
     background: #555;
 }
 
-/* all similar content styling codes */
+ 
 section{
     padding: 100px 0;
 }
@@ -212,24 +212,21 @@ section .title::after{
     color: crimson;
     background: none;
 }
-
-/* about section styling */
-/* Root Variables */
+ 
 :root {
     --primary-color: crimson;
     --secondary-color: #222;
-    --bg-dark: #111; /* Black background for specific sections */
+    --bg-dark: #111;  
     --text-color: #fff;
     --border-radius: 6px;
 }
-
-/* About Section Styling */
+ 
 .about .title::after {
     content: "who I am";
     color: var(--primary-color);
 }
 
-/* About Content Layout */
+ 
 .about .about-content {
     display: flex;
     align-items: center;
@@ -238,7 +235,7 @@ section .title::after{
     gap: 20px;
 }
 
-/* Left Column - Image with Hover Pulse and Glow Effect */
+ 
 .about .about-content .left {
     position: relative;
     width: 45%;
@@ -265,18 +262,18 @@ section .title::after{
     box-shadow: 0 0 30px rgba(220, 20, 60, 0.8); /* Crimson glow */
 }
 
-/* Pulse & Glow Effect (Now Appears ONLY on Hover) */
+/* Pulse & Glow Effect */
 .about .about-content .left::before {
     content: "";
     position: absolute;
-    width: 480px;
-    height: 480px;
+    width: 390px;
+    height: 490px;
     border-radius: 50%;
     background: radial-gradient(rgba(220, 20, 60, 0.6), transparent);
-    box-shadow: 0 0 50px rgba(220, 20, 60, 0.8); /* Glow effect */
+    box-shadow: 0 0   30px rgba(220, 20, 60, 0.8);  
     z-index: 0;
     opacity: 0;
-    transform: scale(0); /* Hidden by default */
+    transform: scale(0); 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
@@ -286,8 +283,7 @@ section .title::after{
     transform: scale(1);
     animation: pulse-animation 1.5s infinite ease-in-out;
 }
-
-/* Smooth Pulsing Glow Animation */
+ 
 @keyframes pulse-animation {
     0% {
         transform: scale(1);
@@ -306,7 +302,7 @@ section .title::after{
     }
 }
 
-/* Right Column - Text */
+ 
 .about .about-content .right {
     width: 50%;
     height: 100%;
@@ -326,7 +322,7 @@ section .title::after{
     text-align: justify;
 }
 
-/* Download CV Button */
+ 
 #downloadcv {
     display: inline-block;
     background: var(--primary-color);
@@ -341,21 +337,20 @@ section .title::after{
     cursor: pointer;
 }
 
-/* Button Hover Effect */
+ 
 #downloadcv:hover {
     background: none;
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
 
-/* ✅ Fix Background Issue for "My Services" & "My Team" Only */
 #services, #team {
-    background-color: var(--bg-dark); /* Black background */
-    color: var(--text-color); /* White text */
+    background-color: var(--bg-dark);  
+    color: var(--text-color);  
     padding: 60px 0;
 }
 
-/* Responsive Fix */
+ 
 @media (max-width: 768px) {
     .about .about-content {
         flex-direction: column;
@@ -374,13 +369,12 @@ section .title::after{
 }
 
 
-/* Services & Teams Section */
+ 
 .services, .teams {
     color: var(--text-color);
     background: var(--bg-dark);
 }
-
-/* Title Decorations */
+ 
 .services .title::before,
 .teams .title::before {
     background: var(--text-color);
@@ -392,7 +386,7 @@ section .title::after{
     content: "what I provide";
 }
 
-/* Carousel Settings */
+ 
 .services .carousel {
     display: flex;
     justify-content: center;
@@ -400,7 +394,7 @@ section .title::after{
     overflow: hidden;
 }
 
-/* Service Cards - Now with Equal Heights */
+ 
 .services .carousel .card {
     background: var(--secondary-color);
     border-radius: var(--border-radius);
@@ -408,7 +402,7 @@ section .title::after{
     text-align: center;
     overflow: hidden;
     transition: all 0.3s ease;
-    height: 320px; /* Fixed height for uniformity */
+    height: 320px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -418,7 +412,7 @@ section .title::after{
     transform: scale(1.05);
 }
 
-/* Box Inside Card */
+ 
 .services .carousel .card .box {
     display: flex;
     flex-direction: column;
@@ -467,10 +461,10 @@ section .title::after{
     background: var(--primary-color) !important;
 }
 
-/* Responsive Fix for Smaller Screens */
+ 
 @media (max-width: 768px) {
     .services .carousel .card {
-        height: auto; /* Allow flexibility on smaller screens */
+        height: auto; 
     }
 }
 
