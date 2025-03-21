@@ -245,6 +245,7 @@ section .title::after{
 }
 
 /*Profile Image*/
+/* Profile Image */
 .about .about-content .left img {
     height: 450px;
     width: 450px;
@@ -256,7 +257,7 @@ section .title::after{
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/*Glow & Slight Zoom on Hover*/
+/* Glow & Slight Zoom on Hover */
 .about .about-content .left img:hover {
     transform: scale(1.08);
     box-shadow: 0 0 30px rgba(220, 20, 60, 0.8); /* Crimson glow */
@@ -270,7 +271,7 @@ section .title::after{
     height: 340px;
     border-radius: 50%;
     background: radial-gradient(rgba(220, 20, 60, 0.6), transparent);
-    box-shadow: 0 0   30px rgba(220, 20, 60, 0.8);  
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8);  
     z-index: 0;
     opacity: 0;
     transform: scale(0); 
@@ -302,7 +303,19 @@ section .title::after{
     }
 }
 
- 
+/* Disable Hover Effects on Mobile */
+@media screen and (max-width: 768px) {
+    .about .about-content .left img,
+    .about .about-content .left img:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .about .about-content .left::before {
+        display: none !important;
+    }
+}
+
 .about .about-content .right {
     width: 50%;
     height: 100%;
