@@ -77,7 +77,7 @@ section .title::after{
     transform: translateX(-50%);
 }
 
-/* navbar styling */
+/*navbar styling*/
 .navbar{
     position: fixed;
     width: 100%;
@@ -126,7 +126,7 @@ section .title::after{
     color: #fff;
 }
 
-/* menu btn styling */
+/*menu btn styling*/
 .menu-btn{
     color: #fff;
     font-size: 23px;
@@ -162,7 +162,7 @@ section .title::after{
 }
 
 
-/* home section styling */
+/*home section styling*/
 .home{
     display: flex;
     background: url("black.jpg") no-repeat center;
@@ -244,7 +244,7 @@ section .title::after{
     align-items: center;
 }
 
-/* Profile Image */
+/*Profile Image*/
 .about .about-content .left img {
     height: 450px;
     width: 450px;
@@ -256,7 +256,7 @@ section .title::after{
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-/* Glow & Slight Zoom on Hover */
+/*Glow & Slight Zoom on Hover*/
 .about .about-content .left img:hover {
     transform: scale(1.08);
     box-shadow: 0 0 30px rgba(220, 20, 60, 0.8); /* Crimson glow */
@@ -266,8 +266,8 @@ section .title::after{
 .about .about-content .left::before {
     content: "";
     position: absolute;
-    width: 390px;
-    height: 490px;
+    width: 340px;
+    height: 340px;
     border-radius: 50%;
     background: radial-gradient(rgba(220, 20, 60, 0.6), transparent);
     box-shadow: 0 0   30px rgba(220, 20, 60, 0.8);  
