@@ -35,7 +35,7 @@ $(document).ready(function(){
 
      
     var typed = new Typed(".typing", {
-        strings: [ "web Developer", "graphic designer", "web Designer", "Freelancer"],
+        strings: [ "web Developer","UI/UX Designer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
